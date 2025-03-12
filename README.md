@@ -67,24 +67,24 @@ API Endpoints
 Categories
 GET /api/categories: Get all categories.
 
-GET /api/categories/:id: Get a single category by ID.
+GET /api/category/:id: Get a single category by ID.
 
-POST /api/categories: Create a new category.
+POST /api/add_category: Create a new category.
 
-PUT /api/categories/:id: Update a category by ID.
+PUT /api/category/update/:id: Update a category by ID.
 
-DELETE /api/categories/:id: Delete a category by ID.
+DELETE /api/category/:id: Delete a category by ID.
 
 Products
 GET /api/products: Get all products.
 
-GET /api/products/:id: Get a single product by ID.
+GET /api/product/:id: Get a single product by ID.
 
-POST /api/products: Create a new product.
+POST /api/add_product: Create a new product.
 
-PUT /api/products/:id: Update a product by ID.
+PUT /api/product/update/:id: Update a product by ID.
 
-DELETE /api/products/:id: Delete a product by ID.
+DELETE /api/product/:id: Delete a product by ID.
 
 Frontend Implementation
 The React frontend provides a user interface to interact with the backend API. It includes the following components:
