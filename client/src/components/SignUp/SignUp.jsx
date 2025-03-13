@@ -23,6 +23,7 @@ function SignUp() {
       try {
         const url = "http://localhost:3000/auth/register";      
       const registerUser = await axios.post(url, values);
+      console.log("Signup successful", registerUser.data);
 
       if(registerUser.data.success) {
         navigate("/login");
