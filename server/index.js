@@ -16,6 +16,10 @@ app.use("/auth", UserRouter);
 app.use("/api", CategoryRouter);
 app.use("/api", ProductRouter);
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the E-commerce API");
+});
+
 connectToDB();
 
 const port = Number(process.env.PORT) || 3000;
