@@ -64,6 +64,12 @@ Access the application
 Open your browser and navigate to http://localhost:3000.
 
 API Endpoints
+
+Users
+
+GET /api/users: Get all customers
+GET /api/user/:id Get single user
+
 Categories
 GET /api/categories: Get all categories.
 
