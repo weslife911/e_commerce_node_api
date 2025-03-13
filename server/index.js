@@ -6,6 +6,7 @@ const connectToDB = require("./database/db");
 const { registerUser, loginUser, getAllUsers, getUser } = require("./controllers/AuthController");
 const { addCategory, getAllCategories, getCategory, updateCategory } = require("./controllers/CategoryController");
 const { addProducts, getProducts, getProduct } = require("./controllers/ProductController");
+const { Category } = require("./models/Category");
 
 const app = express();
 
