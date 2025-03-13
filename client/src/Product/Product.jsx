@@ -24,10 +24,15 @@ function Product() {
             imageUrl: Yup.string().required("Product image URL is required"),
             description: Yup.string().required("Product Description is required"),
         }), onSubmit: async(values) => {
-            const url = "http://localhost:3000/api/add_product";
-            const response = await axios.post(url, values);
-
-            console.log(response);
+            try {
+              const url = "http://localhost:3000/api/add_product";
+              const response = await axios.post(url, values);
+              console.log('Product added:', response.data);
+              console.log("Product Added Successfully");
+            } catch (error) {
+              console.error('Error adding product', error);
+              alert('Failed to add product');
+          }
         }
     });
 

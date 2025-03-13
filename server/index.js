@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require('body-parser');
 const connectToDB = require("./database/db");
 const { registerUser, loginUser, getAllUsers, getUser } = require("./controllers/AuthController");
 const { addCategory, getAllCategories, getCategory, updateCategory } = require("./controllers/CategoryController");
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 
 app.get("/", (req, res) => {
