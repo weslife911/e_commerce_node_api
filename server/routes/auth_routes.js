@@ -1,7 +1,5 @@
 const { getAllUsers, getUser } = require("../controllers/AuthController");
 const { addCategory, getAllCategories, getCategory, updateCategory } = require("../controllers/CategoryController");
-const { addProducts } = require("../controllers/ProductController");
-
 const router = require("express").Router();
 
 // Categories
