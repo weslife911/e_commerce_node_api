@@ -27,7 +27,16 @@ app.get("/api/user/:id", getUser);
 // Categories
 
 app.post("/api/add_category", addCategory);
-app.get("/api/categories", getAllCategories);
+app.get("/api/categories", async(req, res) => {
+    const allCategories = await Category.find({});
+
+    if(!allCategories.length > 0) return res.json({
+        success: false,
+        message: "Categories could not be found"
+    });
+
+    res.status(200).json(allCategories);
+});
 app.get("/api/categories/:id", getCategory);
 app.put("/api/category/update/:id", updateCategory);
 
