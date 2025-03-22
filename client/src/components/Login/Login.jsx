@@ -5,6 +5,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
 import {  } from "react-jwt"
+import Facebook from '../../Logo/Facebook';
+import Github from '../../Logo/Github';
+import Google from '../../Logo/Google';
 
 function Login() {
 
@@ -40,6 +43,7 @@ function Login() {
     }
   });
 
+
   return (
     <>
       <div className="container">
@@ -57,6 +61,17 @@ function Login() {
             </p>
             <Link to="#">Forgot password?</Link>
             <input type="submit" className="button" value="Login"/>
+            <div className='social-media'>
+              <Link to="http://localhost:3000/auth/facebook">
+                <Facebook/>
+              </Link>
+              <Link to={"http://localhost:3000/auth/google"}>
+                <Google/>
+              </Link>
+              <Link to="http://localhost:3000/auth/github">
+                <Github/>
+              </Link>
+            </div>
           </form>
           <div className="signup">
             <span className="signup">Don't have an account?

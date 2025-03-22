@@ -24,9 +24,10 @@ function ViewCategories() {
 
 export const getCategories = async() => {
     try {
-        const url = "https://e-commerce-node-api-zxb7.onrender.com/api/categories"
-    const response = axios.get(url);
-    return response;
+        // const url = "https://e-commerce-node-api-zxb7.onrender.com/api/categories";
+        const url = "http://localhost:3000/api/categories";
+        const response = axios.get(url);
+        return response;
     } catch(e) {
         console.log("Error fetching categories", e)
     }

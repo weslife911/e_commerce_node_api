@@ -3,8 +3,6 @@ require("dotenv").config();
 const { User, validateRegister, validateLogin } = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Joi = require("joi");
-const passwordComplexity = require("joi-password-complexity");
 
 const registerUser = async(req, res) => {
     try {
@@ -82,7 +80,6 @@ const loginUser = async(req, res) => {
 
         const token = jwt.sign({
             id: checkExistingUser._id,
-            role: checkExistingUser.role
         }, process.env.JWT_SECRET_KEY, {expiresIn: "5m"});
 
         res.status(201).json({
@@ -99,6 +96,8 @@ const loginUser = async(req, res) => {
         });
     }
 };
+
+
 
 const getAllUsers = async(req, res) => {
     try {
@@ -149,5 +148,5 @@ module.exports = {
     registerUser,
     loginUser,
     getAllUsers,
-    getUser
+    getUser,
 };

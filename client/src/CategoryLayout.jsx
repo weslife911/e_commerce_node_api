@@ -1,26 +1,16 @@
+import axios from 'axios';
 import React from 'react'
 // import Header from './components/Header/Header';
 // import Footer from './components/Footer/Footer';
-import { Outlet } from 'react-router-dom';
-import { useJwt } from "react-jwt";
+import { Outlet, useLoaderData } from 'react-router-dom';
 
 function CategoryLayout() {
 
-  const { decodedToken } = useJwt(localStorage.getItem("token"));
-
-
-
-
-  if(decodedToken) {
-    // console.log(decodedToken.role[0]);
-  } else {
-    // navigate("/login");
-  }
 
   return (
-    <div>
+    <>
         <Outlet/>
-    </div>
+    </>
   )
 }
 

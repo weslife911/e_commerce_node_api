@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
+import Facebook from '../../Logo/Facebook';
+import Google from '../../Logo/Google';
+import Github from '../../Logo/Github';
 
 function SignUp() {
 
@@ -57,6 +60,13 @@ function SignUp() {
               {formik.errors.password}
             </p>
             <input type="submit" className="button" value="SignUp"/>
+            <div className='social-media'>
+              <Facebook/>
+              <Link to={"http://localhost:3000/auth/google"}>
+                <Google/>
+              </Link>
+              <Github/>
+            </div>
           </form>
           <div className="signup">
             <span className="signup">Already have an account?

@@ -2,42 +2,41 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require('body-parser');
+const session = require('express-session');
 const connectToDB = require("./database/db");
-const { registerUser, loginUser, getAllUsers, getUser } = require("./controllers/AuthController");
 const { addCategory, getAllCategories, getCategory, updateCategory } = require("./controllers/CategoryController");
 const { addProducts, getProducts, getProduct } = require("./controllers/ProductController");
+const { registerUser, loginUser, getAllUsers, getUser } = require("./controllers/AuthController");
+const authRoutes = require("./routes/AuthRoutes");
+const adminRoutes = require("./routes/AdminRoutes");
+const categoryRoutes = require("./routes/CategoryRoutes");
+const productRoutes = require("./routes/ProductRoutes");
+const passport = require("passport");
 
 const app = express();
 
-app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(
+    session(
+      { 
+        secret: process.env.SESSION_SECRET, 
+        resave: false, 
+        saveUninitialized: false 
+      }
+    )
+);
+app.use(passport.authenticate('session'));
+app.use(passport.initialize());
+app.use(passport.session());
 
+app.use("/", authRoutes); // User Routes
+app.use("/api", adminRoutes); // Admin Routes
+app.use("/api", categoryRoutes); // Category Routes
+app.use("/api", productRoutes); // Product Routes
 
-app.get("/", (req, res) => {
-    res.send("Welcome to the E-commerce API");
-});
+// Github Auth
 
-// Users
-
-app.post("/auth/register", registerUser);
-app.post("/auth/login", loginUser);
-app.get("/api/users", getAllUsers);
-app.get("/api/user/:id", getUser);
-
-// Categories
-
-app.post("/api/add_category", addCategory);
-app.get("/api/categories", getAllCategories);
-app.get("/api/categories/:id", getCategory);
-app.put("/api/category/update/:id", updateCategory);
-
-// Products
-
-app.post("/api/add_product", addProducts);
-app.get("/api/products", getProducts);
-app.get("/api/product/:id", getProduct);
 
 connectToDB();
 

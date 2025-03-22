@@ -12,19 +12,12 @@ const addProducts = async(req, res) => {
             success: false,
             message: error.details[0].message
         });
-
-        const categoryId = await Category.find({ name: category });
-
-        if(!categoryId) return res.json({
-            success: false,
-            message: "ID does not exist for this category name"
-        });
-
+        
         const newProduct = await Product({
             name: name,
             price: price,
             stock: stock,
-            category: categoryId._id,
+            category: category,
             imageUrl: imageUrl,
             description: description
         }).save();
